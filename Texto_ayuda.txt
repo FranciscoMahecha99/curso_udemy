@@ -1,0 +1,429 @@
+ isLoading$: Observable<boolean>;
+  isLoadingSubject: BehaviorSubject<boolean>;
+  
+  constructor(
+    private http: HttpClient,
+    public authservice: AuthService,
+  ) {
+    this.isLoadingSubject = new BehaviorSubject<boolean>(false);
+    this.isLoading$ = this.isLoadingSubject.asObservable();
+  }
+
+
+<select
+                        class="form-control form-select-solid fw-bolder"
+                        name="categorie"
+                        placeholder="Selec. Categoria"
+                    >
+                        <option value="">Todos</option>
+                    </select>
+
+
+<button class="btn btn-primary ml-2" placement="top" [ngbTooltip]="'Filtro'" (click)="search()">
+                <i class="icon text-white flaticon-search-1"></i>
+            </button>
+            <button class="btn btn-dark ml-2" placement="top" [ngbTooltip]="'Reset'" (click)="reset()">
+                <i class="icon text-white flaticon-refresh"></i>
+            </button>
+
+
+<div class="col-lg-6 col-md-6 col-sm-12 my-2">
+            <label class="form-label">Sube tu imagen: *</label>
+            <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile"  accept=".jpeg, .bmp, .jpg, .png, .gif, .webp"  (change)="processFile($event)">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
+
+
+import { CKEditorModule } from 'ckeditor4-angular';
+CKEditorModule,
+<ckeditor data="<p>Hello, world!</p>"></ckeditor>
+
+
+// tienda app.module.ts
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+HttpClientModule,
+BrowserAnimationsModule,
+
+// tienda *.modules.ts
+FormsModule,
+ReactiveFormsModule,
+HttpClientModule,
+RouterModule,
+
+// admin *.module.ts
+HttpClientModule,
+FormsModule,
+NgbModule,
+ReactiveFormsModule,
+InlineSVGModule,
+NgbModalModule,
+
+<div class="d-flex justify-content-end flex-shrink-0">
+	<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+		<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+		<span class="svg-icon svg-icon-3">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z" fill="currentColor" />
+				<path opacity="0.3" d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z" fill="currentColor" />
+			</svg>
+		</span>
+		<!--end::Svg Icon-->
+	</a>
+	<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+		<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+		<span class="svg-icon svg-icon-3">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="currentColor" />
+				<path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="currentColor" />
+			</svg>
+		</span>
+		<!--end::Svg Icon-->
+	</a>
+	<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+		<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+		<span class="svg-icon svg-icon-3">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="currentColor" />
+				<path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="currentColor" />
+				<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="currentColor" />
+			</svg>
+		</span>
+		<!--end::Svg Icon-->
+	</a>
+</div>
+
+text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+
+
+https://pixabay.com/es/videos/binario-c%C3%B3digo-binario-847/
+
+<!--begin::Row-->
+            <div class="row mb-5">
+                <!--begin::Col-->
+                <div class="col-xl-3">
+                    <div class="fs-6 fw-bold mt-2 mb-3">Project Logo</div>
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                    <!--begin::Image input-->
+                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
+                        <!--begin::Preview existing avatar-->
+                        <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 75%; background-image: url('assets/media/svg/brand-logos/volicity-9.svg')"></div>
+                        <!--end::Preview existing avatar-->
+                        <!--begin::Label-->
+                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="" data-bs-original-title="Change avatar">
+                            <i class="bi bi-pencil-fill fs-7"></i>
+                            <!--begin::Inputs-->
+                            <input type="file" name="avatar" accept=".png, .jpg, .jpeg">
+                            <input type="hidden" name="avatar_remove">
+                            <!--end::Inputs-->
+                        </label>
+                        <!--end::Label-->
+                        <!--begin::Cancel-->
+                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="" data-bs-original-title="Cancel avatar">
+                            <i class="bi bi-x fs-2"></i>
+                        </span>
+                        <!--end::Cancel-->
+                        <!--begin::Remove-->
+                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove avatar">
+                            <i class="bi bi-x fs-2"></i>
+                        </span>
+                        <!--end::Remove-->
+                    </div>
+                    <!--end::Image input-->
+                    <!--begin::Hint-->
+                    <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                    <!--end::Hint-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+
+
+
+
+<div class="row g-9">
+                        <div class="col-12">
+                            <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6 active" data-kt-button="true">
+                                <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                    <input class="form-check-input" type="radio" name="usage" value="1" checked="checked">
+                                </span>
+                                <span class="ms-5">
+                                    <span class="fs-6 fw-bolder mb-1 d-block">Precise Usage</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
+                                <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                    <input class="form-check-input" type="radio" name="usage" value="2">
+                                </span>
+                                <span class="ms-5">
+                                    <span class="fs-6 fw-bolder mb-1 d-block">Normal Usage</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+
+<span class="spinner-border spinner-border-sm align-middle ms-2" *ngIf="isLoading | async"></span>
+
+
+<div class="input-group input-group-solid">
+                  <input type="date"
+                  class="form-control form-control-lg form-control-solid"
+                  [(ngModel)]="start_date"
+                  />
+                </div>
+
+import { Vimeo } from '@vimeo/vimeo';
+const clientId = '9f3479857194c726c43951cad7f34400962c1a90';
+const clientSecret = 'mJHH/4JQmh6XDVpQgEk2pIHynFP0XlKNb9xTc11SJ1woGhg/+3ZOwQMRjbYvxMKpOcPqkkZE6pa98nWqNAE0bZDnvu0BoihAQ+4rZTA1cZgBKUrrTeXrZZDGMlXc/KZl';
+const accessToken = 'df2ef566a7c6ce3d6abea37c80068596';
+
+const client = new Vimeo(clientId, clientSecret, accessToken);
+
+async function subirVideoAVimeo(videoFilePath, videoMetadata) {
+  return new Promise((resolve, reject) => {
+    // Sube el video
+    client.upload(
+      videoFilePath,
+      videoMetadata,
+      function (uri) {
+        resolve('Video subido exitosamente. URI: ' + uri);
+      },
+      function (bytesUploaded, bytesTotal) {
+        const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+        console.log('Progreso de subida: ' + percentage + '%');
+      },
+      function (error) {
+        reject('Error al subir el video: ' + error);
+      }
+    );
+  });
+}
+
+import getVideoDurationInSeconds from 'get-video-duration';
+getVideoDurationInSeconds(videoFilePath).then((duration) => {
+   console.log(formatarDuracion(duration))
+})
+function formatarDuracion(durationInSeconds) {
+  const hours = Math.floor(durationInSeconds / 3600);
+  const minutes = Math.floor((durationInSeconds % 3600) / 60);
+  const seconds = Math.floor(durationInSeconds % 60);
+
+  const formattedHours = String(hours).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(seconds).padStart(2, '0');
+
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+function sumarTiempos(...tiempos) {
+  // Convierte cada tiempo en formato "hh:mm:ss" a segundos y suma todos los segundos.
+  const totalSegundos = tiempos.reduce((total, tiempo) => {
+    const [horas, minutos, segundos] = tiempo.split(':').map(Number);
+    return total + horas * 3600 + minutos * 60 + segundos;
+  }, 0);
+
+  // Convierte los segundos totales a formato "hh:mm:ss".
+  const horas = Math.floor(totalSegundos / 3600);
+  const minutos = Math.floor((totalSegundos % 3600) / 60);
+  const segundos = totalSegundos % 60;
+
+  // Retorna el resultado formateado.
+  return `${horas} horas ${minutos} minutos ${segundos} segundos`;
+}
+const tiempoTotal = sumarTiempos(...registros);
+
+COURSES
+descuento 1
+CURSO A WEB
+CURSO B WEB
+FECHA : 10-08-2023 11 13-08-2023 15
+30% CAMPAÑA FLASH
+
+  16-8 <= 10-08-2023 <= 19-08
+  16-8 <= 13-08-2023 <= 19-08
+
+descuento 2
+CURSO A X
+CURSO C
+FECHA : 11-08-2023 15-08-2023
+30% CAMPAÑA FLASH
+
+CATEGORIAS
+descuento 3
+WEB 
+DISEÑO GRAFICO
+FECHA : 12-08-2023  16-08-2023 
+35%
+
+descuento 4
+WEB
+EMPRENDIMIENTOS
+FECHA : 13-08-2023 17-08-2023
+45%
+
+
+La validación de descuento de cursos nos permite que este no pueda estar en otra campaña de descuento con
+el periodo de tiempo igual o entre rangos de dias.
+
+//
+
+La validación de descuento de categoria nos permite que este no pueda estar en otra campaña de descuento con
+el periodo de tiempo igual o entre rangos de dias.
+
+// CAMPAÑA - CATEGORIA > CURSO
+
+const obtener_imagen = async function(req,res){
+    var img = req.params['img'];
+
+
+    fs.stat('./uploads/courses/'+img, function(err){
+        if(!err){
+            let path_img = './uploads/courses/'+img;
+            res.status(200).sendFile(path.resolve(path_img));
+        }else{
+            let path_img = './uploads/default.jpg';
+            res.status(200).sendFile(path.resolve(path_img));
+        }
+    })
+}
+
+ENVIO DE MAIL
+
+npm i ejs nodemailer handlebars nodemailer-smtp-transport
+
+echodeveloper960@gmail.com
+esooqzvvcccrdfxw
+
+var readHTMLFile = function(path, callback) {
+            fs.readFile(path, {encoding: 'utf-8'}, function (err, html) {
+                if (err) {
+                    throw err;
+                    callback(err);
+                }
+                else {
+                    callback(null, html);
+                }
+            });
+};
+
+var transporter = nodemailer.createTransport(smtpTransport({
+            service: 'gmail',
+            host: 'smtp.gmail.com',
+            auth: {
+            user: 'tucorreo@gmail.com',
+            pass: 'xxxxxx'
+            }
+        }));
+
+
+
+readHTMLFile(process.cwd() + '/mails/email_sale.html', (err, html)=>{
+                                
+            let rest_html = ejs.render(html, {});
+    
+            var template = handlebars.compile(rest_html);
+            var htmlToSend = template({op:true});
+    
+            var mailOptions = {
+                from: 'tucorreo@gmail.com',
+                to: email_cliente,
+                subject: 'Finaliza tu compra ' + orden._id,
+                html: htmlToSend
+            };
+          
+            transporter.sendMail(mailOptions, function(error, info){
+                if (!error) {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+        
+        });
+
+
+<% for(var i=0; i < array.length; i++) { %>
+
+<% } %>
+
+<% if() { %>
+
+<% } %>
+
+<%=  %>
+
+
+
+import fs from 'fs';
+import handlebars from 'handlebars';
+import ejs from 'ejs';
+import nodemailer from 'nodemailer';
+import smtpTransport from 'nodemailer-smtp-transport';
+
+
+<!-- SCRIPT PAYPAL -->
+<script src="https://www.paypal.com/sdk/js?client-id=&vault=true"></script>
+
+components.ts
+declare var paypal:any;
+
+@ViewChild('paypal',{static: true}) paypalElement?: ElementRef;
+
+<div #paypal ></div>
+
+paypal.Buttons({
+        // optional styling for buttons
+        // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+        style: {
+          color: "gold",
+          shape: "rect",
+          layout: "vertical"
+        },
+
+        // set up the transaction
+        createOrder: (data:any, actions:any) => {
+            // pass in any options from the v2 orders create call:
+            // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+
+            const createOrderPayload = {
+              purchase_units: [
+                {
+                  amount: {
+                      description: "COMPRAR POR EL ECOMMERCE",
+                      value: 50
+                  }
+                }
+              ]
+            };
+
+            return actions.order.create(createOrderPayload);
+        },
+
+        // finalize the transaction
+        onApprove: async (data:any, actions:any) => {
+            
+            let Order = await actions.order.capture();
+		// Order.purchase_units[0].payments.captures[0].id
+
+            return actions.order.capture().then(captureOrderHandler);
+        },
+
+        // handle unrecoverable errors
+        onError: (err:any) => {
+            console.error('An error prevented the buyer from checking out with PayPal');
+        }
+    }).render(this.paypalElement?.nativeElement);
+
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check</label>
+</div>
+
+sudo service php7.4-fpm restart
