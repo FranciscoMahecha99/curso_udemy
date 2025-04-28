@@ -17,7 +17,7 @@ router.post('/login_admin', userController.login_admin);
 router.post('/register_admin',path, userController.register_admin);//ruta para registrar un usuario
 router.post('/update',path, userController.update);//ruta para actualizar un usuario
 router.get('/list', userController.list);//ruta para listar los usuarios
-router.delete('/delete:id', userController.remove);//ruta para eliminar un usuario
-router.get("imagen-usuario/:img", userController.get_imagen);
+router.delete('/delete/:id', userController.remove);//ruta para eliminar un usuario
+router.get("/imagen-usuario/:img", userController.get_imagen);//ruta para obtener la imagen de un usuario
 
 export default router;//exporta la ruta

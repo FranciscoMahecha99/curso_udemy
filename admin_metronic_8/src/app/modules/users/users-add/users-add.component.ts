@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Toaster } from 'ngx-toast-notifications';
 import { UsersService } from '../service/users.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-users-add',
@@ -9,6 +10,7 @@ import { UsersService } from '../service/users.service';
 })
 export class UsersAddComponent implements OnInit {
 
+  @Output() UserC : EventEmitter<any> = new EventEmitter()// Emitimos el usuario creado
 
   rol: string = 'admin';
   name: string = '';
@@ -23,6 +25,7 @@ export class UsersAddComponent implements OnInit {
   constructor(
     public userService: UsersService, // Servicio de usuarios
     public toaster : Toaster, // Para las alertas
+    public modal : NgbActiveModal, // Para el modal
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +60,9 @@ export class UsersAddComponent implements OnInit {
 
     this.userService.register(formData).subscribe((resp: any)=>{
       console.log(resp);
+      this.UserC.emit(resp.user); // Emitimos el usuario creado
+      this.modal.close(); // Cerramos el modal
+      this.toaster.open({text: 'Se registro un nuevo usuario',caption: 'VALIDACIONES', type: 'primary'});
     })
   }
 }

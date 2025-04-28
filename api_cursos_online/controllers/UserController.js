@@ -193,31 +193,51 @@ export default {
         }
     },
 
-    list: async (req,res) => {
+    list: async(req,res) => {
         try {
-            var search = req.query.search;//busca un usuario con el nombre ingresado
+            // jose
+            // localhost:3000?search=JOSE( JosE)
+            var search = req.query.search;
+            var rol = req.query.rol;
+            var filter = [
+                {'name': new RegExp('', 'i')},
+            ];
+            if(search){
+                filter = [
+                    {'name': new RegExp(search, 'i')},
+                    {'surname': new RegExp(search, 'i')},
+                    {'email': new RegExp(search, 'i')},
+                ];
+            }
+            if(rol){
+                if(!search){
+                    filter = [];
+                }
+                filter.push({
+                    'rol': rol
+                });
+            }
             let USERS = await models.User.find({
-                $or: [
-                    {'name': new RegExp(search, 'i')},//busca el nombre ingresado sin importar si es mayuscula o minuscula
-                    {'surname': new RegExp(search, 'i')},//busca el apellido ingresado sin importar si es mayuscula o minuscula
-                    {'email': new RegExp(search, 'i')}//busca el correo ingresado sin importar si es mayuscula o minuscula
-                ],
-                "rol": {$in: ["admin", "instructor"]}//busca los usuarios con rol admin o instructor
-            }).sort({'createdAt': -1});//ordena los usuarios por fecha de creacion
+                $or : filter,
+                "rol": {$in: ["admin","instructor"]}
+            }).sort({'createdAt': -1});
 
-            USERS = await USERS.map((user) => {//mapea los usuarios
-                console.log(resource.User.api_resource_user(user));
-                return resource.User.api_resource_user(user);//retorna el recurso de usuario
-            });
-
+            // USERS = await USERS.map((user) => {
+            //     console.log(resource.User.api_resource_user(user));
+            //     return resource.User.api_resource_user(user);
+            // });
+            let FormatUsers = [];
+            for (const USER of USERS) {
+                FormatUsers.push(resource.User.api_resource_user(USER))
+            }
             res.status(200).json({
-                users: USERS,
+                users: FormatUsers,
             });
         } catch (error) {
             console.log(error);
             res.status(500).send({
-                message: 'Ocurrio un problema'
-            });           
+                message: 'OCURRIO UN PROBLEMA'
+            });
         }
     },
 

@@ -17,7 +17,7 @@
 													</svg>
 												</span>
 												<!--end::Svg Icon-->
-												<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search user" />
+												<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search user" (keyup.enter)="listUser()" [(ngModel)]="search" />
 											</div>
 											<!--end::Search-->
 										</div>
@@ -50,13 +50,10 @@
 														<!--begin::Input group-->
 														<div class="mb-10">
 															<label class="form-label fs-6 fw-bold">Role:</label>
-															<select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true">
-																<option></option>
-																<option value="Administrator">Administrator</option>
-																<option value="Analyst">Analyst</option>
-																<option value="Developer">Developer</option>
-																<option value="Support">Support</option>
-																<option value="Trial">Trial</option>
+															<select class="form-select form-select-solid fw-bolder" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true" [(ngModel)]="rol" (change)="listUser()">
+																<option value="">Todos</option>
+																<option value="admin">Administrador</option>
+																<option value="instructor">Instructor</option>
 															</select>
 														</div>
 														<!--end::Input group-->
@@ -342,7 +339,7 @@
 															<!--end::Avatar-->
 															<!--begin::User details-->
 															<div class="d-flex flex-column">
-																<a href="#" onclick="return false" class="text-gray-800 text-hover-primary mb-1">{{USER.name + USER.surname}}</a>
+																<a href="#" onclick="return false" class="text-gray-800 text-hover-primary mb-1">{{USER.name + '  ' +USER.surname}}</a>
 																<!-- <span>smith&#64;kpmg.com</span> -->
 															</div>
 															<!--begin::User details-->
@@ -362,17 +359,7 @@
 														<!--begin::Action=-->
 														<td class="text-end">
 															<div class="d-flex justify-content-end flex-shrink-0">
-																<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-																	<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
-																	<span class="svg-icon svg-icon-3">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z" fill="currentColor" />
-																			<path opacity="0.3" d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z" fill="currentColor" />
-																		</svg>
-																	</span>
-																	<!--end::Svg Icon-->
-																</a>
-																<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+																<a href="#" onclick="return false;" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" (click)="editUser(USER)">
 																	<!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
 																	<span class="svg-icon svg-icon-3">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -382,7 +369,7 @@
 																	</span>
 																	<!--end::Svg Icon-->
 																</a>
-																<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+																<a href="#" onclick="return false;" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" (click)="deleteUser(USER)">
 																	<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																	<span class="svg-icon svg-icon-3">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

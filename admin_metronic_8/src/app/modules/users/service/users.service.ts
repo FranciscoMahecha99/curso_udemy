@@ -20,13 +20,16 @@ export class UsersService {
     this.isLoading$ = this.isLoadingSubject.asObservable();
   }
 
-  listUsers (search:any = null){
+  listUsers (search:any = null, rol:any = null): Observable<any> {
 //enviar token como parte del http
     this.isLoadingSubject.next(true);
     let headers = new HttpHeaders({'token': this.authservice.token});
     let LINK= "?T="
     if (search ){
-      LINK = "&search" + search;  //para buscar un usuario
+      LINK += "&search=" + search;  //para buscar un usuario
+    }
+    if (rol ){
+      LINK += "&search=" + search;  //para buscar un usuario
     }
     let URL = URL_SERVICIOS + '/users/list' + LINK; //para obtener la lista de usuarios
     return this.http.get(URL, {headers: headers}).pipe(
